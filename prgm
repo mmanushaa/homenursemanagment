@@ -1,0 +1,384 @@
+import time
+w=1
+while w:
+  print("---------------------------------------------------------------------------------------------------------------------------------------------------------")
+  print("                                                      HEALHEALTH")
+  print("---------------------------------------------------------------------------------------------------------------------------------------------------------")
+  print("\n")
+  print("We provide the best home care at a reasonable cost.\nWe are widely recognized among customers for providing excellent home care services.\nOur nurses take care of patients wholeheartedly.\nThrough our unremitting efforts, HEAL HEALTH has established an impeccable reputation in the industry.\nWe have hired qualified and experienced nurses and other staff to provide quality care to patients at home\n")
+  print("---------------------------------------------------------------------------------------------------------------------------------------------------------")
+  print("\n")
+  print("Loading",end="")
+  for i in range (1,6):
+      print(".",end="")
+      time.sleep(1.00)
+  print("\n")
+  choose=int(input( "1) APPLY JOB  \t2) FIND NURSE \n                 ENTER YOUR CHOICE:   "))
+  print("\n")
+  if choose==1:
+           signup =int(input("1) SIGN UP \t2) SIGN IN \n                   ENTER YOUR CHOICE:   "))
+           if signup==1:
+                      print("\n")
+                      print("---------------------------------------------------------------------------------------------------------------            
+                                ------------------------------------------")
+                      print("                                                                                    SIGN UP ")
+                      print("---------------------------------------------------------------------------------------------------------------  
+                               ------------------------------------------")
+                      print("\n")
+                      i=input("Enter Name : ")
+                      l=input("Enter Preferred Location : ")
+                      a=int(input("Enter Age : "))
+                      s=input("Enter Specialisation : ")
+                      n=""
+                      b=input("Enter Contact No : ")
+                      u=input("Enter Username : ")
+                      p=input("Enter Password : ")
+                     
+else: 
+                           x=result[0]
+                           if  x!=pas:
+                                    print("##################### Username and Password does not match 
+                                              #######################")
+                           else:
+                             l=0
+                             flag=1
+                             print("\n")
+                             print("---------------------------------------------------------------------------------------------------------
+                                      ------------------------------------------------")
+                             print("                                                     WELCOME TO HEAL HEALTH PORTAL")
+                             print("--------------------------------------------------------------------------------------------------------- 
+                                      ------------------------------------------------")
+                             print("\n")
+                             while flag:
+                                   menu=int(input("\n ________MENU_________  \n 1)DISPLAY your details  \n  
+                                              2)UPDATE your details  \n 3)DELETE your account  \n 4)NOTIFICATION           
+                                               \n 5)EXIT \n           ENTER YOUR CHOICE : " ))
+                                   print("\n")
+                                   import mysql.connector as c
+                                   con=c.connect(host='localhost',user='root',passwd='bvm',database='rough')
+                                   cur=con.cursor()
+                                   
+                                   if menu==1:
+                                                query="select * from nurdetails where username="+"'"+user+"'"
+                                                m=cur.execute(query)
+                                                r=cur.fetchone()
+                                                print("________________ACCOUNT DETAILS________________")
+                                                print("\n","NURSE_ID : ",r[0],"\n","NAME : ",r[1],"\n","LOCATION : 
+                                                       ",r[2],"\n","AGE : ",r[3],"\n","SPECIALISATION : ",r[4],"\n","CONTACT         
+                                                       : ",r[6],"\n","USERNAME : ",r[7])
+                                                cur.close()
+                                                con.close()
+                                                print("___________________________________________________")
+                                   elif menu==2:
+                                      k=1
+                                      while k:       
+                                                print("________________UPDATE DETAILS________________")
+                                                update= int(input("\n 1)Name  \n 2)Age \n 3)Location \n 4)Specialisation  
+                                                              \n 5)Contact number  \n 6)Username  \n 7)Password \n                    
+                                                               CHOOSE : "))
+                                                if update==2:  
+                                                      new=input("ENTER CORRECTION :  ")
+                                                      s="age"
+                                                      k=0
+                                                else:
+                                                      new=input("ENTER CORRECTION :  ")
+                                                        
+                                                      if update==1:
+                                                                s="name"
+                                                                k=0
+                                                      elif update==3:
+                                                                s="location"
+                                                                k=0
+                                                      elif update==4:
+                                                                s="specialisation"
+                                                                k=0
+                                                      elif update==5:
+                                                               s="contact"
+                                                               k=0
+                                                      elif update==6:
+                                                               s="username"
+                                                               k=0
+                                                              
+                                                      elif update==7:
+                                                               s="password"
+                                                               k=0
+                                                      else:
+                                                                s="wrong input"
+                                                                k=1
+                                                                
+                                                q="update nurdetails set "+s+"="+"'"+new+"'"+"where  
+                                                      username="+"'"+user+"'"
+                                                cur.execute(q)
+                                                con.commit()
+                                                cur.close()
+                                                con.close()
+                                                print("            Account updated successfully")
+                                                print("___________________________________________________")
+                                                                               
+                                   elif  menu==3:
+                                           print("___________________________________________________")
+                                           print("\n")
+                                           q="delete from nurdetails where username ="+"'"+user+"'"
+                                           print(" DELETING YOUR ACCOUNT",end="")
+                                           for i in range (1,6):
+                                                print(".",end="")
+                                                time.sleep(1.00)
+                                           print("\n")
+                                           print("\n.............YOUR ACCOUNT HAS BEEN DELETED............. \n")
+                                           print("\n")
+                                           print("                                  THANKYOU             ")
+                                           print("___________________________________________________")
+                                           print("\n")
+                                           cur.execute(q)
+                                           con.commit()
+                                           cur.close()
+                                           con.close()
+                                           w=1
+                                           flag=0
+                                   elif menu==4:
+                                           import mysql.connector as c
+                                           con=c.connect(host='localhost',user='root',passwd='bvm',database='rough')
+                                           cur=con.cursor()
+                                           q="select notification from nurdetails where username = "+"'"+user+"'"
+                                           cur.execute(q)
+                                           w=cur.fetchone()
+                                           print("___________________________________________________")
+                                           print("\n")
+                                           for j in w:
+                                               r=j.split(",")
+                                           m=[]
+                                           for i in r:
+                                                if i not in m:
+                                                     m.append(i)
+                                           z=len(r)
+                                           for i in m:
+                                               if z==1:
+                                                  print("                                  NO NOTIFICATIONS")
+                                                  print("\n")
+                                                  print("___________________________________________________")
+                                                  break
+                                               
+                                               elif i.isdigit():
+                                                  cur.execute("select cust_id,patient_name,location,contact_no,  
+                                                                   patient_age from custdetails where cust_id='{}'".format(str(i)))
+                                                  n=cur.fetchone()
+                                                  print("Code:",n[0],",","Name:",n[1],",","Location:",n[2],",","Contact  
+                                                           no:",n[3],",","Age:",n[4],sep=” “)
+                                                  print("\n")
+                                                  
+                                           if i.isdigit():
+                                             t=int(input("Enter code to ACCEPT or DECLINE request : "))
+                                             men=int(input("1)ACCEPT \n2)DECLINE \n          CHOOSE :"))
+                                             if men==1:
+                                                          o="select nurse_Id from nurdetails where username="+"'"+user+"'"
+                                                          cur.execute(o)
+                                                          
+
+                                                          f=cur.fetchone()
+                                                          ff=str(f[0])
+                                                          cur.execute("update custdetails set notification=concat_ws(  
+                                                                                ',',notification,'{}')where cust_id='{}'".format(ff,str(t)))
+                                                          con.commit()
+                                                          print("\n")
+                                                          print("...................ACCEPTED......................")
+                                                          print("\n")
+                                                          cur.execute("update nurdetails set notification='' where  
+                                                                                  username='{}'".format(user))
+                                                          con.commit()
+                                                         print("_______________________________________________
+                                                                  ____")
+                                             elif men==2:
+                                                      cur.execute("update nurdetails set notification='' where 
+                                                                           username='{}'".format(user))
+                                                      con.commit()
+                                                      for i in r:
+                                                         if i.isdigit():
+                                                             if int(i)==t:
+                                                                continue
+                                                             else:
+                                                                cur.execute("update nurdetails set notification=concat_ws(       
+                                                                          ',',notification,'{}')where username='{}'".format(str(i),user))
+                                                                con.commit()
+                                                                print("\n")
+                                                                print("...............DECLINED.............")
+                                                                print("\n")
+                                                                print("____________________________________________
+                                                                         _______")
+                                                
+                                   elif menu==5:
+                                        w=1
+                                        flag=0
+                                        print("\n")
+                                        print("              THANKYOU             ")
+                                        print("\n")
+
+#FIND HOMENURSE
+  if choose==2:
+           n=int(input("1) SIGN UP \t 2) SIGN IN \n             ENTER YOUR CHOICE : "))
+           if n==1:
+                      print("\n")
+                      print("---------------------------------------------------------------------------------------------------------------  
+                                ------------------------------------------")
+
+                             
+                                     
+
+
+                      print("                                                                                    SIGN UP ")
+                      print("--------------------------------------------------------------------------------------------------------------- 
+                               ------------------------------------------")
+                      print("\n")
+                      i=input("Enter Patient Name: ")
+                      l=input("Enter  Location: ")
+                      a=int(input("Enter Age: "))
+                      s=input("Enter Illness or Requirement: ")
+                      b=input("Enter Contact No: ")
+                      n=''
+                      u=input("Enter Username: ")
+                      p=input("Enter Password: ")
+                     
+                      import mysql.connector as c
+                      con=c.connect(host='localhost',user='root',passwd='bvm',database='rough')
+                      cur=con.cursor()
+                      q="select max(cust_ID) from custdetails"
+                      cur.execute(q)
+                      result=cur.fetchone()
+                      ide=result[0]+1
+                      query= "insert into custdetails values("+str(ide)+","+"'"+i+"'"+","+"'"+l+" ' "+","+"'"+s+"'"+","+  
+                                   "'"+b+"'"+","+"'"+u+"'"+","+"'"+p+"'"+","+str(a)+","+"'"+""+"'"+")"
+                      cur.execute(query)
+                      con.commit()
+                      cur.close()
+                      con.close()
+           print("\n")
+           print("------------------------------------------------------------------------------------------------------------------------
+                    ---------------------------------")
+           print("                                                                           SIGN IN  ")
+           print("------------------------------------------------------------------------------------------------------------------------
+                    ---------------------------------")
+           print("\n")
+           l=1
+           while l:
+                      user=input(" ENTER USERNAME  : ")
+                      pas=input("ENTER PASSWORD  : ")
+                      import mysql.connector as c
+                      con=c.connect(host='localhost',user='root',passwd='bvm',database='rough')
+                      cur=con.cursor()
+                      q="select password from custdetails where username = "+"'"+user+"'"
+                      u=cur.execute(q)
+                      result=cur.fetchone()
+                      if result==None:
+
+
+                          print("################# You have not registered ################ ")
+                      else: 
+                           x=result[0]
+                           if  x!=pas:
+                                    print("##################### Username and Password does not match  
+                                             #######################")
+                           else:
+                             l=0
+                             print("\n")
+                             print("---------------------------------------------------------------------------------------------------------
+                                       ------------------------------------------------")
+                             print("                                                     WELCOME TO HEAL HEALTH PORTAL")
+                             print("---------------------------------------------------------------------------------------------------------
+                                       ------------------------------------------------")
+                             print("\n")
+                             flag=1
+                             while flag:
+                                n=int(input("\n ________MENU_________\n 1)FIND HOMENURSE \n 
+                                                  2)NOTIFICATION \n 3)EXIT  \n                 CHOOSE : "))
+                                if n==1:
+                                  print("________________FIND NURSE________________")
+                                  print("\n")
+                                  L=input("Enter preffered Location : ")
+                                  s=input("Enter preffered Specialisation : ")
+
+                                  import mysql.connector as c
+                                  con=c.connect(host='localhost',user='root',passwd='bvm',database='rough')
+                                  cur=con.cursor()
+                                  q="select * from nurdetails where  location="   +   "'"   +L+   "'"  +     "or 
+                                       Specialisation="   +  "'"  +s+  "'"
+                                  cur.execute(q)
+                                  r=cur.fetchall()
+                                  print("\n")
+                                  
+                                  for i in r:
+                                   print("Code:", i[0],"Name:",”,”,i[1],"Location:",i[2], ”,”,"Age:",i[3], ”,”,"Specialisation:     
+                                             ",i[4], ”,”,"Contact:",i[6],sep=" ")
+                                   if r==[]:
+                                    print("                    NO RESULT FOUND")
+                                    print("\n")
+                                    print("___________________________________________________")
+                                   else:
+                                    print("\n")
+                                    t=int(input("ENTER CODE OF REQUIRED NURSE : "))
+                                    print("\n")
+
+
+                                      
+                                    import mysql.connector as c
+                                    con=c.connect(host='localhost',user='root',passwd='bvm',database='rough')
+                                    cur=con.cursor()
+                                    o="select cust_Id from custdetails where username="+"'"+user+"'"
+                                    cur.execute(o)
+                                    f=cur.fetchone()
+                                    ff=str(f[0])
+                                    cur.execute("update nurdetails set notification=concat_ws(               
+                                                          ',',notification,'{}')where  nurse_id='{}'".format(ff,str(t)))
+                                    con.commit()
+                                    cur.close
+                                    con.close
+                                    print("................REQUEST SEND SUCCESSFULLY.................")
+                                    print("___________________________________________________")
+                                    print("\n")
+
+                                elif n==2:
+                                           import mysql.connector as c
+                                           con=c.connect(host='localhost',user='root',passwd='bvm',database='rough')
+                                           cur=con.cursor()
+                                           q="select distinct notification from custdetails where username =  
+                                                 "+"'"+user+"'"
+                                           cur.execute(q)
+                                           w=cur.fetchone()
+                                           for j in w:
+                                               r=j.split(",")
+                                           print("___________________________________________________")
+                                           z=len(r)
+                                           for i in r:
+                                               if z==1 :
+                                                    print("\n")
+                                                    print("                              NO NOTIFICATIONS")
+                                                    print("\n")
+                                                    print("_____________________________________________
+                                                             ______")
+                                                    print("\n")
+                                                    break
+                                           m=[]
+                                           for i in r:
+                                                if i not in m:
+                                                     m.append(i)
+                                           for i in m:
+                                               if i.isdigit():
+                                                  cur.execute("select nurse_id,name,location,contact,age from nurdetails  
+                                                                      where nurse_id='{}'".format(str(i)))
+                                                  n=cur.fetchone()
+
+
+                                                  print("\n")
+                                                  print(n[1],"Accepted your request")
+                                                  print("code:",n[0],",","Name:",n[1],",","location:",n[2],",","contact   
+                                                             no:",n[3],",","Age:",n[4],sep=” “)
+                                                  print("___________________________________________________")
+                                                  print("\n")
+                           
+                                   
+                                elif n==3:
+                                        w=1
+                                        flag=0
+                                        print("\n")
+                                        print("              THANKYOU             ")
+                                        print("\n")
+
+
